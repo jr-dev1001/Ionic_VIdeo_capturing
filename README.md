@@ -6,10 +6,6 @@ A complete Ionic application that allows users to capture videos using the devic
 
 - 📹 Capture videos using device camera
 - 💾 Store videos locally on the device
-- 🎬 Playback captured videos
-- 🗑️ Delete videos
-- 📱 Cross-platform support (iOS, Android, Web)
-- 🎨 Modern, responsive UI
 
 ## Prerequisites
 
@@ -176,8 +172,7 @@ This service handles all video-related operations:
 
 - **`captureVideo()`**: Captures a video from the device camera
 - **`getVideos()`**: Retrieves all saved videos
-- **`getVideo(filepath)`**: Gets a specific video by filepath
-- **`deleteVideo(video)`**: Deletes a video from storage
+
 
 ### HomePage (`src/app/home/home.page.ts`)
 
@@ -185,18 +180,13 @@ The main page component that provides:
 
 - UI for capturing videos
 - List of saved videos
-- Video playback functionality
-- Delete video functionality
+
 
 ## Usage
 
 1. **Capture a Video**: Tap the "Capture Video" button. On web, this opens a file picker. On native devices, it opens the camera/video picker.
 
 2. **View Videos**: All captured videos are listed below the capture button with their name, size, and date.
-
-3. **Play Video**: Tap on any video in the list to play it in a modal.
-
-4. **Delete Video**: Tap the trash icon next to any video to delete it.
 
 ## Platform-Specific Notes
 
