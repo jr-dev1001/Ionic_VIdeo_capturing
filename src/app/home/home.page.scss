@@ -1,0 +1,72 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+ion-list {
+  margin-top: 1rem;
+}
+
+ion-item {
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+ion-modal {
+  --width: 90%;
+  --max-width: 600px;
+  --height: auto;
+  --border-radius: 10px;
+}
+
+video {
+  border-radius: 8px;
+  background: #000;
+}
+
+ion-content {
+  /* Leave space so the list doesn't hide behind the bottom button */
+  --padding-bottom: 96px;
+}
+
+.capture-button-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(env(safe-area-inset-bottom) + 16px);
+  padding: 0 16px;
+  z-index: 10;
+}
+
+.capture-button {
+  height: 56px;
+  --border-radius: 999px;
+  --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+  --background-activated: linear-gradient(135deg, var(--ion-color-primary-shade), var(--ion-color-secondary-shade));
+  --box-shadow: 0 12px 24px rgba(56, 128, 255, 0.35);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+
