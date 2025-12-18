@@ -1,42 +1,64 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
+      <ion-icon name="videocam" class="header-icon"></ion-icon>
       Video Capture
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="main-content">
   <ion-header collapse="condense">
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-title size="large">Video Capture</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class="ion-padding">
-    <!-- Video List -->
-    <ion-list *ngIf="videos.length > 0" class="ion-margin-top">
-      <ion-list-header>
-        <ion-label>Saved Videos ({{ videos.length }})</ion-label>
-      </ion-list-header>
+  <div class="content-wrapper">
+    <!-- Header Section -->
+    <div class="header-section">
+      <h1 class="page-title">My Videos</h1>
+      <p class="page-subtitle" *ngIf="videos.length > 0">{{ videos.length }} video{{ videos.length > 1 ? 's' : '' }} saved</p>
+    </div>
 
-      <ion-item *ngFor="let video of videos" button (click)="playVideo(video)">
-        <ion-icon name="videocam-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h2>{{ video.name }}</h2>
-          <p>{{ formatFileSize(video.size) }} • {{ formatDate(video.date) }}</p>
-        </ion-label>
-        <ion-button fill="clear" color="danger" slot="end" (click)="deleteVideo(video); $event.stopPropagation()">
-          <ion-icon name="trash-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-list>
+    <!-- Video List -->
+    <div *ngIf="videos.length > 0" class="videos-container">
+      <ion-card *ngFor="let video of videos" class="video-card" (click)="playVideo(video)">
+        <div class="video-card-content">
+          <div class="video-icon-wrapper">
+            <ion-icon name="play-circle" class="play-icon"></ion-icon>
+          </div>
+          <div class="video-info">
+            <h3 class="video-title">{{ formatVideoName(video.name) }}</h3>
+            <div class="video-meta">
+              <span class="meta-item">
+                <ion-icon name="calendar-outline"></ion-icon>
+                {{ formatDate(video.date) }}
+              </span>
+              <span class="meta-item" *ngIf="video.size > 0">
+                <ion-icon name="folder-outline"></ion-icon>
+                {{ formatFileSize(video.size) }}
+              </span>
+            </div>
+          </div>
+          <ion-button 
+            fill="clear" 
+            color="danger" 
+            class="delete-button"
+            (click)="deleteVideo(video); $event.stopPropagation()">
+            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card>
+    </div>
 
     <!-- Empty State -->
     <div *ngIf="videos.length === 0" class="empty-state">
-      <ion-icon name="videocam-outline" size="large" color="medium"></ion-icon>
-      <h2>No videos captured yet</h2>
-      <p>Tap the button above to capture your first video!</p>
+      <div class="empty-icon-wrapper">
+        <ion-icon name="videocam-outline"></ion-icon>
+      </div>
+      <h2 class="empty-title">No videos yet</h2>
+      <p class="empty-text">Tap the button below to capture your first video!</p>
     </div>
   </div>
 

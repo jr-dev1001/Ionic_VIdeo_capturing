@@ -133,7 +133,25 @@ export class HomePage implements OnInit {
    */
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+    return date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+
+  /**
+   * Format video name for display (remove timestamp prefix if present)
+   */
+  formatVideoName(name: string): string {
+    // Remove timestamp prefix (e.g., "1234567890_video.mp4" -> "video.mp4")
+    const parts = name.split('_');
+    if (parts.length > 1 && /^\d+$/.test(parts[0])) {
+      return parts.slice(1).join('_');
+    }
+    return name;
   }
 
   /**

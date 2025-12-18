@@ -42,8 +42,7 @@ testem.log
 Thumbs.db
 
 # Capacitor
-/android
-/ios
+
 /www
 
 # Environment
